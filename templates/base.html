@@ -3,11 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    
-    <!-- Tailwind Compressor -->
-    {% compress css %}
-        <link rel="stylesheet" href="{{ static('src/output.css') }}">
-    {% endcompress %}
+
+    {% include 'base_header.html' %}
 
 </head>
 <body>
