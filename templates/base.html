@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{% block title %} Replace This Title {% endblock %}</title>
 
     {% include 'base_header.html' %}
 
 </head>
 <body>
 
-<h1>Hello World! this is the base page.</h1>
+{% include 'base_nav.html' %}
+
 
 {% block content %}
-{% endblock %}
+{% endblock content %}
 
 </body>
 </html>
