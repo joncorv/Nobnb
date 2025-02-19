@@ -1,5 +1,7 @@
 <div class="indicators-carousel relative w-full h-full group" data-carousel="static">
     <!-- Background overlay to prevent flashing -->
+   
+{#    {% if loop.index|divisibleby:2 %}#}
     <div class="absolute inset-0 bg-black/5 rounded-xl pointer-events-none"></div>
 
     <!-- Carousel wrapper -->
@@ -25,6 +27,13 @@
             <img src="/static/img/listings/temp_photos/malibu_temp.jpg" class="w-full h-full object-cover" alt="...">
         </div>
     </div>
+
+    <!-- Top left button  -->
+    {% if (range(0, 10) | random)% 2 == 1    %}
+        <div class="absolute z-30 flex space-x-3 rtl:space-x-reverse top-3 left-3 shadow-lg">
+            <button type="button" class="bg-white px-2.5 py-1 rounded-full text-gray-900 text-sm font-medium" aria-current="true" aria-label="Special Button">Guest Favorite</button>
+        </div>
+    {% endif %}
 
     <!-- Slider indicators - always visible -->
     <div class="absolute z-30 flex space-x-3 rtl:space-x-reverse bottom-5 left-1/2 -translate-x-1/2">
