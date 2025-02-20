@@ -1,42 +1,51 @@
 <div class="indicators-carousel relative w-full h-full group" data-carousel="static">
-    <!-- Background overlay to prevent flashing -->
-   
-{#    {% if loop.index|divisibleby:2 %}#}
-    <div class="absolute inset-0 bg-black/5 rounded-xl pointer-events-none"></div>
-
     <!-- Carousel wrapper -->
-    <div class="absolute inset-0 overflow-hidden rounded-xl">
-        <!-- Item 1 -->
-        <div class="hidden duration-300 ease-in-out h-full" data-carousel-item="active">
-            <img src="/static/img/listings/temp_photos/malibu_temp.jpg" class="w-full h-full object-cover" alt="...">
+    <a id="carousel_wrapper_link" href="http://localhost:8000">
+        <div id="carousel_wrapper" class="absolute inset-0 overflow-hidden rounded-xl">
+            <!-- Item 1 -->
+            <div class="hidden duration-300 ease-in-out h-full" data-carousel-item="active">
+                <img src="/static/img/listings/temp_photos/malibu_temp.jpg" class="w-full h-full object-cover" alt="...">
+            </div>
+            <!-- Item 2 -->
+            <div class="hidden duration-300 ease-in-out h-full" data-carousel-item>
+                <img src="/static/img/listings/temp_photos/malibu_temp.jpg" class="w-full h-full object-cover" alt="...">
+            </div>
+            <!-- Item 3 -->
+            <div class="hidden duration-300 ease-in-out h-full" data-carousel-item>
+                <img src="/static/img/listings/temp_photos/malibu_temp.jpg" class="w-full h-full object-cover" alt="...">
+            </div>
+            <!-- Item 4 -->
+            <div class="hidden duration-300 ease-in-out h-full" data-carousel-item>
+                <img src="/static/img/listings/temp_photos/malibu_temp.jpg" class="w-full h-full object-cover" alt="...">
+            </div>
+            <!-- Item 5 -->
+            <div class="hidden duration-300 ease-in-out h-full" data-carousel-item>
+                <img src="/static/img/listings/temp_photos/malibu_temp.jpg" class="w-full h-full object-cover" alt="...">
+            </div>
         </div>
-        <!-- Item 2 -->
-        <div class="hidden duration-300 ease-in-out h-full" data-carousel-item>
-            <img src="/static/img/listings/temp_photos/malibu_temp.jpg" class="w-full h-full object-cover" alt="...">
-        </div>
-        <!-- Item 3 -->
-        <div class="hidden duration-300 ease-in-out h-full" data-carousel-item>
-            <img src="/static/img/listings/temp_photos/malibu_temp.jpg" class="w-full h-full object-cover" alt="...">
-        </div>
-        <!-- Item 4 -->
-        <div class="hidden duration-300 ease-in-out h-full" data-carousel-item>
-            <img src="/static/img/listings/temp_photos/malibu_temp.jpg" class="w-full h-full object-cover" alt="...">
-        </div>
-        <!-- Item 5 -->
-        <div class="hidden duration-300 ease-in-out h-full" data-carousel-item>
-            <img src="/static/img/listings/temp_photos/malibu_temp.jpg" class="w-full h-full object-cover" alt="...">
-        </div>
-    </div>
-
+    </a>
     <!-- Top left button  -->
     {% if (range(0, 10) | random)% 2 == 1    %}
-        <div class="absolute z-30 flex space-x-3 rtl:space-x-reverse top-3 left-3 shadow-lg">
-            <button type="button" class="bg-white px-2.5 py-1 rounded-full text-gray-900 text-sm font-medium" aria-current="true" aria-label="Special Button">Guest Favorite</button>
+        <div id="carousel_guest_favorite" class="absolute z-30 flex space-x-3 rtl:space-x-reverse top-3 left-3 shadow-lg">
+            <a href="http://localhost:8000">
+                <button type="button" class="bg-white px-2.5 py-1 rounded-full text-gray-900 text-sm font-medium" aria-current="true" aria-label="Special Button">Guest Favorite</button>
+            </a>
         </div>
     {% endif %}
 
+    <!-- Top Right Heart button  -->
+        <div id="carousel_heart_button" class="absolute z-30 flex space-x-3 rtl:space-x-reverse top-3 right-3 shadow-lg">
+            <a href="http://localhost:8000">
+                <svg class="w-[28px] h-[28px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" fill-opacity=".5" viewBox="0 0 24 24">
+                    <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"/>
+                </svg>
+
+
+            </a>
+        </div>
+
     <!-- Slider indicators - always visible -->
-    <div class="absolute z-30 flex space-x-3 rtl:space-x-reverse bottom-5 left-1/2 -translate-x-1/2">
+    <div id="slider_indicators" class="absolute z-30 flex space-x-3 rtl:space-x-reverse bottom-5 left-1/2 -translate-x-1/2">
         <button type="button" class="w-2 h-2 bg-white/50 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
         <button type="button" class="w-2 h-2 bg-white/50 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
         <button type="button" class="w-2 h-2 bg-white/50 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
@@ -45,7 +54,7 @@
     </div>
 
     <!-- Slider controls - with hover effect and disabled states -->
-    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none opacity-0 group-hover:opacity-100 transition-opacity duration-150 disabled:opacity-0 disabled:cursor-not-allowed" data-carousel-prev>
+    <button id="slider_control_left" type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none opacity-0 group-hover:opacity-100 transition-opacity duration-150 disabled:opacity-0 disabled:cursor-not-allowed" data-carousel-prev>
         <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-2 group-focus:ring-white group-focus:outline-none">
             <svg class="w-3 h-3 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
@@ -53,7 +62,7 @@
             <span class="sr-only">Previous</span>
         </span>
     </button>
-    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none opacity-0 group-hover:opacity-100 transition-opacity duration-150 disabled:opacity-0 disabled:cursor-not-allowed" data-carousel-next>
+    <button id="slider_control_right" type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none opacity-0 group-hover:opacity-100 transition-opacity duration-150 disabled:opacity-0 disabled:cursor-not-allowed" data-carousel-next>
         <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-2 group-focus:ring-white group-focus:outline-none">
             <svg class="w-3 h-3 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
@@ -63,94 +72,4 @@
     </button>
 </div>
 
-<<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const carousels = document.querySelectorAll('.indicators-carousel');
 
-        carousels.forEach(carousel => {
-            const prevButton = carousel.querySelector('[data-carousel-prev]');
-            const nextButton = carousel.querySelector('[data-carousel-next]');
-            let queuedTransitions = 0;
-            let isTransitioning = false;
-
-            const handleTransition = async () => {
-                if (isTransitioning) {
-                    return;
-                }
-
-                isTransitioning = true;
-
-                while (queuedTransitions !== 0) {
-                    const direction = queuedTransitions > 0 ? 'next' : 'prev';
-                    const currentSlide = carousel.querySelector('[data-carousel-item="active"]');
-                    const allSlides = carousel.querySelectorAll('[data-carousel-item]');
-                    const currentIndex = Array.from(allSlides).indexOf(currentSlide);
-
-                    // Calculate next slide index
-                    const nextIndex = direction === 'next'
-                        ? (currentIndex + 1) % allSlides.length
-                        : (currentIndex - 1 + allSlides.length) % allSlides.length;
-
-                    // Update active states
-                    currentSlide.removeAttribute('data-carousel-item');
-                    currentSlide.setAttribute('data-carousel-item', '');
-                    allSlides[nextIndex].removeAttribute('data-carousel-item');
-                    allSlides[nextIndex].setAttribute('data-carousel-item', 'active');
-
-                    // Update indicators
-                    const indicators = carousel.querySelectorAll('[data-carousel-slide-to]');
-                    indicators.forEach((indicator, index) => {
-                        indicator.setAttribute('aria-current', index === nextIndex ? 'true' : 'false');
-                    });
-
-                    // Wait for transition
-                    await new Promise(resolve => setTimeout(resolve, 300));
-
-                    // Update queue
-                    queuedTransitions += direction === 'next' ? -1 : 1;
-                }
-
-                isTransitioning = false;
-            };
-
-            nextButton.addEventListener('click', () => {
-                queuedTransitions++;
-                handleTransition();
-            });
-
-            prevButton.addEventListener('click', () => {
-                queuedTransitions--;
-                handleTransition();
-            });
-
-            // Preload adjacent images
-            const preloadAdjacentImages = () => {
-                const currentSlide = carousel.querySelector('[data-carousel-item="active"]');
-                const allSlides = carousel.querySelectorAll('[data-carousel-item]');
-                const currentIndex = Array.from(allSlides).indexOf(currentSlide);
-
-                // Calculate indexes to preload based on queue direction
-                const preloadIndexes = [];
-                if (queuedTransitions > 0) {
-                    // Preload next few slides in sequence
-                    for (let i = 1; i <= Math.min(queuedTransitions, 3); i++) {
-                        preloadIndexes.push((currentIndex + i) % allSlides.length);
-                    }
-                } else if (queuedTransitions < 0) {
-                    // Preload previous few slides in sequence
-                    for (let i = 1; i <= Math.min(Math.abs(queuedTransitions), 3); i++) {
-                        preloadIndexes.push((currentIndex - i + allSlides.length) % allSlides.length);
-                    }
-                }
-
-                // Preload images
-                preloadIndexes.forEach(index => {
-                    const img = allSlides[index].querySelector('img');
-                    if (img?.src) new Image().src = img.src;
-                });
-            };
-
-            carousel.addEventListener('transitionend', preloadAdjacentImages);
-        });
-    });
-</script>
