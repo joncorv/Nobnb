@@ -1,6 +1,6 @@
 <div class="indicators-carousel relative w-full h-full group" data-carousel="static">
     <!-- Carousel wrapper -->
-    <a id="carousel_wrapper_link" href="http://localhost:8000">
+    <a id="carousel_wrapper_link" href="http://localhost:8000" onclick="event.stopPropagation(); event.preventDefault();" >
         <div id="carousel_wrapper" class="absolute inset-0 overflow-hidden rounded-xl">
             <!-- Item 1 -->
             <div class="hidden duration-300 ease-in-out h-full" data-carousel-item="active">
@@ -27,22 +27,20 @@
     <!-- Top left button  -->
     {% if (range(0, 10) | random)% 2 == 1    %}
         <div id="carousel_guest_favorite" class="absolute z-30 flex space-x-3 rtl:space-x-reverse top-3 left-3 shadow-lg">
-            <a href="http://localhost:8000">
+            <a href="http://localhost:8000" onclick="event.stopPropagation(); event.preventDefault();">
                 <button type="button" class="bg-white px-2.5 py-1 rounded-full text-gray-900 text-sm font-medium" aria-current="true" aria-label="Special Button">Guest Favorite</button>
             </a>
         </div>
     {% endif %}
 
     <!-- Top Right Heart button  -->
-        <div id="carousel_heart_button" class="absolute z-30 flex space-x-3 rtl:space-x-reverse top-3 right-3 shadow-lg">
-            <a href="http://localhost:8000">
-                <svg class="w-[28px] h-[28px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" fill-opacity=".5" viewBox="0 0 24 24">
-                    <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"/>
-                </svg>
-
-
-            </a>
-        </div>
+    <div id="carousel_heart_button" class="absolute z-30 flex space-x-3 rtl:space-x-reverse top-3 right-3 shadow-lg">
+        <a href="http://localhost:8000" class="transform transition-transform hover:scale-110" onclick="event.stopPropagation(); event.preventDefault();">
+            <svg class="w-[28px] h-[28px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" fill-opacity=".5" viewBox="0 0 24 24">
+                <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"/>
+            </svg>
+        </a>
+    </div>
 
     <!-- Slider indicators - always visible -->
     <div id="slider_indicators" class="absolute z-30 flex space-x-3 rtl:space-x-reverse bottom-5 left-1/2 -translate-x-1/2">
@@ -54,7 +52,7 @@
     </div>
 
     <!-- Slider controls - with hover effect and disabled states -->
-    <button id="slider_control_left" type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none opacity-0 group-hover:opacity-100 transition-opacity duration-150 disabled:opacity-0 disabled:cursor-not-allowed" data-carousel-prev>
+    <button id="slider_control_left" type="button" class="absolute top-1/2 -translate-y-1/2 start-0 z-30 flex items-center justify-center px-4 cursor-pointer group focus:outline-none opacity-0 group-hover:opacity-100 transition-opacity duration-150 disabled:opacity-0 disabled:cursor-not-allowed" data-carousel-prev>
         <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-2 group-focus:ring-white group-focus:outline-none">
             <svg class="w-3 h-3 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
@@ -62,7 +60,7 @@
             <span class="sr-only">Previous</span>
         </span>
     </button>
-    <button id="slider_control_right" type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none opacity-0 group-hover:opacity-100 transition-opacity duration-150 disabled:opacity-0 disabled:cursor-not-allowed" data-carousel-next>
+    <button id="slider_control_right" type="button" class="absolute top-1/2 -translate-y-1/2 end-0 z-30 flex items-center justify-center px-4 cursor-pointer group focus:outline-none opacity-0 group-hover:opacity-100 transition-opacity duration-150 disabled:opacity-0 disabled:cursor-not-allowed" data-carousel-next>
         <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-2 group-focus:ring-white group-focus:outline-none">
             <svg class="w-3 h-3 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
