@@ -1,3 +1,8 @@
+#Tailwind Caching stuff
+/static/src/output.css
+/static/CACHE/css/*
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
