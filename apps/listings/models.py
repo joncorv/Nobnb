@@ -1,5 +1,7 @@
 from django.db import models
+
 from apps.accounts.models import User
+
 
 # Create your models here.
 class Listing(models.Model):
@@ -14,12 +16,15 @@ class Listing(models.Model):
 	villain = models.CharField(max_length=100)
 	what_book_movie_show = models.CharField(max_length=100)
 	num_deaths = models.IntegerField()
+	nightly_rate = models.DecimalField(max_digits=7, decimal_places=2)
+	average_rating = models.DecimalField(max_digits=3, decimal_places=2)
 	# User and Creation Info
 	creator = models.ForeignKey(User, on_delete=models.CASCADE)
 	created_at = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
 		return f"{self.name} from {self.what_book_movie_show} in {self.city}, {self.state_or_province}"
+
 
 class Review(models.Model):
 	# Each review points to a single Listing
