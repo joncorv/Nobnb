@@ -9,7 +9,9 @@ class Listing(models.Model):
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
 	# General Facts about the Listing
-	short_name = models.CharField(max_length=50)  # Short name for search page
+	short_name = models.CharField(
+		max_length=200, default=""
+	)  # Short name for search page
 	name = models.CharField(max_length=100)  # Long name for detail page
 	description = models.TextField()  # 100+ word description of the property.
 
@@ -31,7 +33,7 @@ class Listing(models.Model):
 	updated_at = models.DateTimeField(auto_now=True)
 
 	# Profile images. Can we turn this into a TMDB or IMDB or Google scraper?
-	imageset = models.ImageField(upload_to="listing_images")
+	# imageset = models.ImageField(upload_to="listing_images")
 
 	# Review Stats. This should be revised to be a calculated field.
 	average_rating = models.DecimalField(max_digits=3, decimal_places=2)

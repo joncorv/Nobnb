@@ -4,10 +4,14 @@ from decimal import Decimal
 
 from apps.accounts.models import User
 from apps.listings.models import Listing
+from core.settings import BASE_DIR
 
 
 def run():
-	csv_file_location = "scripts/dummy_listings.csv"
+	csv_file_location = (
+		"/home/joncorv/Documents/Pycharm/Nobnb/scripts/dummy_listings.csv"
+	)
+	dummy_img_directory = "static/img/listings/dummy_images"
 
 	def random_user():
 		return choice(User.objects.all())
@@ -36,4 +40,6 @@ def run():
 			listing.save()
 			print(f"Created listing: {listing.short_name}")
 
-	# create image scraper for all the listings
+			# Create an image folder for current listing
+			listing_folder = BASE_DIR / dummy_img_directory / listing.id
+			os.makedirs(listing_folder)
