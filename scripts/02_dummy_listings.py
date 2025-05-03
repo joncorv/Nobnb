@@ -9,7 +9,7 @@ from core.settings import BASE_DIR
 
 def run():
     csv_file_location = (
-        "/home/joncorv/Documents/Pycharm/Nobnb/scripts/dummy_listings.csv"
+        "/Users/jonncorv/PycharmProjects/Nobnb/scripts/dummy_listings.csv"
     )
     dummy_img_directory = "static/img/listings/dummy_images"
 
@@ -41,16 +41,16 @@ def run():
             print(f"Created listing: {listing.short_name}")
 
             # Create an image folder for current listing
-            listing_folder = f"{BASE_DIR}/{dummy_img_directory}/{listing.id}"
+            listing_folder = f"{BASE_DIR}/{dummy_img_directory}/{listing.short_name}"
             os.makedirs(listing_folder)
 
             search_term = f"'{row["image_search_terms"]}'"
             count = 6
 
             # default data
-            api_key = "Zak3UErMUP3a80OKvPO4WTCEGWOx4QN6bHi-chVShUM"
-            search_url = "https://api.unsplash.com/search/photos"
-            headers = {"Authorization": f"Client-ID {api_key}"}
+            api_key = "rM5ZwdZtKEgHvY7f5ux0Z26RXcyZkkaGZoKDtC5hoGvxnBRxtFPO2tJ0"
+            search_url = "https://api.pexels.com/v1/search"
+            headers = {"Authorization": api_key}
             params = {"query": search_term, "per_page": count}
 
             # http request -> response
@@ -58,7 +58,7 @@ def run():
 
             for i in range(count):
                 image_save_path = f"{listing_folder}/{listing.short_name}_{i}.jpg"
-                image_url = response.get("results")[i].get("urls").get("regular")
+                image_url = response.get("photos")[i].get("src").get("medium")
                 image_response = requests.get(image_url)
 
                 if image_response.status_code == 200:

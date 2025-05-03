@@ -18,6 +18,7 @@ dependencies = [
     "pillow==11.1.0",
     "random-address>=1.1.1",
     "rcssmin==1.1.2",
+    "requests>=2.32.3",
     "rjsmin==1.2.2",
     "sqlparse==0.5.3",
     "whitenoise==6.8.2",
