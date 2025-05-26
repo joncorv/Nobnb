@@ -6,7 +6,7 @@
 
     <!-- Listing Title and 2 Buttons -->
     <div id="title_share_save_container" class=" max-w-screen-xl flex flex-row w-full justify-between mx-auto  px-4 py-2 gap-6">
-        <h1 class="justify-start text-3xl font-medium text-gray-900 lg:text-2xl">Stunning Coastal Retreat on Carbon Beach</h1>
+        <h1 class="justify-start text-3xl font-medium text-gray-900 lg:text-2xl">{{ listing.name }}</h1>
         <div class="justify-end items-center">
             <!-- Share Button -->
             <button id="share_btn" type="button" class="text-gray-800 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium underline rounded-lg text-sm px-3 py-2 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -33,23 +33,23 @@
         <div id="photo_collage" class="grid grid-cols-4 gap-2 rounded-xl overflow-hidden h-[50vh] max-h-[500px] min-h-[375px]">
             <!-- Large Main Image (Left Side) - no rounded corners on individual images -->
             <div id="photo_1" class="col-span-2 row-span-2 overflow-hidden">
-                <img src="/static/img/listings/temp_photos/malibu_temp.jpg" alt="Beachfront property exterior" class="w-full h-full object-cover">
+                <img src="{{ (listing.listing_images.all())[0].image_lg.url }}" alt="Beachfront property exterior" class="w-full h-full object-cover">
             </div>
 
             <!-- Top Right Images - no rounded corners on individual images -->
             <div id="photo_2" class="col-span-1 overflow-hidden">
-                <img src="/static/img/listings/temp_photos/malibu_temp_06.png" alt="Property deck view" class="w-full h-full object-cover">
+                <img src="{{ (listing.listing_images.all())[1].image_lg.url }}" alt="Property deck view" class="w-full h-full object-cover">
             </div>
             <div id="photo_3" class="col-span-1 overflow-hidden">
-                <img src="/static/img/listings/temp_photos/malibu_temp_03.png" alt="Bedroom interior" class="w-full h-full object-cover">
+                <img src="{{ (listing.listing_images.all())[2].image_lg.url }}" alt="Bedroom interior" class="w-full h-full object-cover">
             </div>
 
             <!-- Bottom Right Images - no rounded corners on individual images -->
             <div id="photo_4" class="col-span-1 overflow-hidden">
-                <img src="/static/img/listings/temp_photos/malibu_temp_04.png" alt="Beach view" class="w-full h-full object-cover">
+                <img src="{{ (listing.listing_images.all())[3].image_lg.url }}" alt="Beach view" class="w-full h-full object-cover">
             </div>
             <div id="photo_5" class="col-span-1 overflow-hidden">
-                <img src="/static/img/listings/temp_photos/malibu_temp_05.png" alt="Living area" class="w-full h-full object-cover">
+                <img src="{{ (listing.listing_images.all())[4].image_lg.url }}" alt="Living area" class="w-full h-full object-cover">
             </div>
         </div>
     </div>
@@ -60,7 +60,7 @@
             <!-- Left Column - Property Details -->
             <div class="flex-1">
                 <!-- Property Title and Info -->
-                <h2 class="text-2xl font-medium mb-1">Entire rental unit in Malibu, California</h2>
+                <h2 class="text-2xl font-medium mb-1">Entire rental unit in {{ listing.city }}, {{ listing.state_or_province }}</h2>
                 <p class="text-gray-700 mb-6">4 guests · 1 bedroom · 2 beds · 1 bath</p>
 
                 <!-- Rating and Reviews Section -->
@@ -77,7 +77,7 @@
                         </div>
                         <div>
                             <p class="font-medium">One of the most loved homes on</p>
-                            <p class="font-medium">Airbnb, according to guests</p>
+                            <p class="font-medium">Zombnb, according to guests</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-8">
@@ -114,7 +114,7 @@
                         <span class="text-2xl">SA</span>
                     </div>
                     <div>
-                        <h2 class="font-medium text-lg">Hosted by Stay Awhile</h2>
+                        <h2 class="font-medium text-lg">Hosted by {{ listing.creator.first_name }} {{ listing.creator.last_name }}</h2>
                         <p class="text-gray-600">Superhost · 9 years hosting</p>
                     </div>
                 </div>
@@ -159,12 +159,7 @@
                 <!-- Property Description -->
                 <div class="mb-8">
                     <p class="text-gray-800 mb-4">
-                        A peaceful and serene reserve meticulously designed for luxury and relaxation, located
-                        in the heart of Malibu with exclusive access to CURE Wellness and Gym. Just steps away
-                        from feeling your toes in the sand! An intimate collection of 10 ocean view suites on
-                        California's most sought-after beach. Perfect location for long walks on the beach,
-                        paddle boarding, kayaking, swimming, and sunbathing on Carbon Beach! Beautiful
-                        sunsets, ocean waves and star-lit nights await you....
+	                    {{ listing.description }}
                     </p>
                     <button class="flex items-center font-medium">
                         Show more

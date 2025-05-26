@@ -26,20 +26,29 @@ class Listing(models.Model):
     what_book_movie_show = models.CharField(max_length=100)  # Source material
     num_deaths = models.IntegerField()  # How many people died here in book/movie
     nightly_rate = models.DecimalField(max_digits=7, decimal_places=2)  # rand cost
+    search_terms = models.CharField(default="", max_length=100)
 
     # User and Creation Info
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    # Profile images. Can we turn this into a TMDB or IMDB or Google scraper?
-    # imageset = models.ImageField(upload_to="listing_images")
+    # Profile images. Can we turn this into a TMDB or IMDB or Google scraper
+    # Insert Foreign Key Here
 
     # Review Stats. This should be revised to be a calculated field.
     average_rating = models.DecimalField(max_digits=3, decimal_places=2)
 
     def __str__(self):
         return f"{self.short_name} from {self.what_book_movie_show} in {self.city}, {self.state_or_province}"
+
+
+class ListingImage(models.Model):
+    listing = models.ForeignKey(
+        Listing, on_delete=models.CASCADE, related_name="listing_images"
+    )
+    image_lg = models.ImageField(upload_to="listing_images/")
+    image_sm = models.ImageField(upload_to="listing_images/")
 
 
 class Review(models.Model):
