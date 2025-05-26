@@ -23,3 +23,8 @@ dependencies = [
     "sqlparse==0.5.3",
     "whitenoise==6.8.2",
 ]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.29.5",
+]
